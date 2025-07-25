@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveDraw Studio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <!-- Header -->
+    <div class="header fade-in">
+        <div class="logo">LiveDraw Studio</div>
+        <div class="user-info">
+            <div class="user-avatar" id="userAvatar">?</div>
+            <span id="username">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar scale-in" id="toolbar">
+        <div class="toolbar-content">
+            <div class="toolbar-section">
+                <div class="toolbar-title">Colors</div>
+                <div class="color-palette">
+                    <div class="color-option active" style="background: #000000" data-color="#000000"></div>
+                    <div class="color-option" style="background: #ef4444" data-color="#ef4444"></div>
+                    <div class="color-option" style="background: #f97316" data-color="#f97316"></div>
+                    <div class="color-option" style="background: #eab308" data-color="#eab308"></div>
+                    <div class="color-option" style="background: #22c55e" data-color="#22c55e"></div>
+                    <div class="color-option" style="background: #3b82f6" data-color="#3b82f6"></div>
+                    <div class="color-option" style="background: #8b5cf6" data-color="#8b5cf6"></div>
+                    <div class="color-option" style="background: #ec4899" data-color="#ec4899"></div>
+                    <div class="color-option" style="background: #6b7280" data-color="#6b7280"></div>
+                    <div class="color-option" style="background: #ffffff; border: 1px solid #e5e7eb" data-color="#ffffff"></div>
+                </div>
+                <div class="custom-color-container">
+                    <input type="color" id="colorPicker" value="#000000">
+                    <span style="font-size: 12px; color: var(--text-muted);">Custom</span>
+                </div>
+            </div>
+
+            <div class="toolbar-section">
+                <div class="toolbar-title">Brush Size</div>
+                <div class="size-control">
+                    <input type="range" id="sizePicker" min="1" max="50" value="4">
+                    <div class="size-indicator" id="sizeIndicator"></div>
+                </div>
+            </div>
+
+            <div class="toolbar-section">
+                <div class="toolbar-title">Actions</div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="eraserBtn">🧽 Eraser</button>
+                    <button class="btn btn-primary" id="undoBtn">↶ Undo</button>
+                    <button class="btn btn-danger" id="clearBtn">🗑️ Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Canvas Container -->
+    <div class="canvas-container">
+        <canvas id="board"></canvas>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="chat-panel scale-in">
+        <div class="chat-header">
+            <div class="chat-title">Live Chat</div>
+            <div class="online-indicator">
+                <div class="online-dot"></div>
+                <span>Online</span>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-container">
+            <input class="chat-input" id="chatInput" type="text" placeholder="Type your message..." />
+        </div>
+    </div>
+
+    <!-- Socket.IO -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
