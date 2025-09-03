@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
+import os
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
-app.config['SECRET_KEY'] = 'secret!'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev-secret')
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Store usernames by session ID
